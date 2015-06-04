@@ -19,7 +19,16 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-configure pgsql -with-pgsql=/usr/include/postgresql/ \ 
 	&& docker-php-ext-install gd pgsql
 
-#module need to be install too =>> reflection sockets spl standard xml
+RUN curl -sS https://pecl.php.net/get/SPL_Types-0.4.0.tgz -o SPL_Types-0.4.0.tgz  \
+    && mkdir -p /usr/src/php/spl \
+    && tar -xof SPL_Types-0.4.0.tgz -C /usr/src/php/spl --strip-components=1 \
+    && rm SPL_Types-0.4.0.tgz \
+    && cd /usr/src/php/spl \
+    && phpize \
+    && ./configure \
+    && make \
+    && make install \
+    && echo "extension=spl_types.so" > /usr/local/etc/php/conf.d/ext-spl.ini
 
 #Install composer
 RUN curl -sS https://getcomposer.org/installer | php \
