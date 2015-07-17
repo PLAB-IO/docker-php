@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install mcrypt mbstring bz2 zip \ 
 	&& docker-php-ext-configure gd -with-freetype-dir=/usr/include/ -with-jpeg-dir=/usr/include/ \ 
 	&& docker-php-ext-configure pgsql -with-pgsql=/usr/include/postgresql/ \ 
-	&& docker-php-ext-install gd pgsql
+	&& docker-php-ext-install gd pgsql pdo_pgsql
 
 RUN curl -sS https://pecl.php.net/get/SPL_Types-0.4.0.tgz -o SPL_Types-0.4.0.tgz  \
     && mkdir -p /usr/src/php/spl \
