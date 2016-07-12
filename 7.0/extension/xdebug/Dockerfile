@@ -1,6 +1,6 @@
 FROM plab/docker-php:7.0-fpm
 
-RUN curl -sS http://xdebug.org/files/xdebug-2.4.0.tgz -o xdebug-2.4.0.tgz \
+RUN curl -sS https://xdebug.org/files/xdebug-2.4.0.tgz -o xdebug-2.4.0.tgz \
     && mkdir -p /usr/src/php/xdebug \
     && tar -xof xdebug-2.4.0.tgz -C /usr/src/php/xdebug --strip-components=1 \
     && rm xdebug-2.4.0.tgz \
